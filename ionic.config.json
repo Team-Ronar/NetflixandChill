@@ -1,0 +1,8 @@
+{
+  "name": "NetflixandChill",
+  "app_id": "8d2330fe",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
