@@ -19,14 +19,18 @@ export class SearchPage {
    * Perform a service for the proper items.
    */
   getItems(ev) {
-    let val = ev.target.value;
-    if (!val || !val.trim()) {
-      this.currentItems = [];
-      return;
-    }
-    this.currentItems = this.items.query({
-      name: val
-    });
+   this.api.get(ev.value)
+   .subscribe((data :any) => data.results.forEach(movie => console.log(movie.title)));
+    
+    
+    // let val = ev.target.value;
+    // if (!val || !val.trim()) {
+    //   this.currentItems = [];
+    //   return;
+    // }
+    // this.currentItems = this.items.query({
+    //   name: val
+    // });
   }
 
   /**
@@ -36,6 +40,3 @@ export class SearchPage {
     this.navCtrl.push('ItemDetailPage', {
       item: item
     });
-  }
-
-}
