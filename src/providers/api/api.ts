@@ -6,12 +6,20 @@ import { Injectable } from '@angular/core';
  */
 @Injectable()
 export class Api {
-  url: string = 'https://example.com/api/v1';
+  url: string = 'https://api.themoviedb.org/3/';
+  ///discover/movie
+  
+//https://api.themoviedb.org/3/search/movie?api_key=eac86952cd452099f635cdc4ef624edc&language=en-US&include_adult=false
+  filter: string = '&language=en-US&include_adult=false&query='
+  
+  api: string = "api_key=eac86952cd452099f635cdc4ef624edc";
 
   constructor(public http: HttpClient) {
   }
 
   get(endpoint: string, params?: any, reqOpts?: any) {
+    let getUrl = this.url + "search/movie?" + this.api + this.filter + endpoint;
+    
     if (!reqOpts) {
       reqOpts = {
         params: new HttpParams()
@@ -25,8 +33,8 @@ export class Api {
         reqOpts.params = reqOpts.params.set(k, params[k]);
       }
     }
-
-    return this.http.get(this.url + '/' + endpoint, reqOpts);
+    console.log(getUrl);
+    return this.http.get(getUrl, reqOpts);
   }
 
   post(endpoint: string, body: any, reqOpts?: any) {

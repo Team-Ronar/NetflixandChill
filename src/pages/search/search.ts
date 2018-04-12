@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Item } from '../../models/item';
 import { Items } from '../../providers/providers';
+import { Api } from '../../providers/api/api';
 
 @IonicPage()
 @Component({
@@ -13,20 +14,24 @@ export class SearchPage {
 
   currentItems: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public items: Items) { }
+  constructor(public api: Api, public navCtrl: NavController, public navParams: NavParams, public items: Items) { }
 
   /**
    * Perform a service for the proper items.
    */
   getItems(ev) {
-    let val = ev.target.value;
-    if (!val || !val.trim()) {
-      this.currentItems = [];
-      return;
-    }
-    this.currentItems = this.items.query({
-      name: val
-    });
+   this.api.get(ev.value)
+   .subscribe(data => data.results.forEach(movie => console.log(movie.title)));
+    
+    
+    // let val = ev.target.value;
+    // if (!val || !val.trim()) {
+    //   this.currentItems = [];
+    //   return;
+    // }
+    // this.currentItems = this.items.query({
+    //   name: val
+    // });
   }
 
   /**
