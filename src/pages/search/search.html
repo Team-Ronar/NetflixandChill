@@ -12,7 +12,7 @@
   <ion-list>
     <button ion-item (click)="openItem(Item)" *ngFor="let item of currentItems">
       <ion-avatar item-start>
-        <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{movie.poster_path}}" >
+        <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{item.poster_path}}" >
       </ion-avatar>
       <h2>{{item.title}}</h2>
       <p>{{item.vote_count}}</p>
