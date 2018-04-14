@@ -21,7 +21,17 @@ export class SearchPage {
    */
   getItems(ev) {
    this.api.get(ev.value)
-   .subscribe((data :any) => data.results.forEach(movie => console.log(movie.title)));
+   .subscribe((data :any) => {
+     
+     this.currentItems = data.results;
+     console.log(this.currentItems)
+     
+   })
+   
+  }   
+   
+   
+   //(movie => console.log(movie.title)));
     
     
     // let val = ev.target.value;
@@ -37,10 +47,10 @@ export class SearchPage {
   /**
    * Navigate to the detail page for this item.
    */
-  openItem(item: Item) {
-    this.navCtrl.push('ItemDetailPage', {
-      item: item
-    });
-  }
+ // openItem(item: Item) {
+   // this.navCtrl.push('ItemDetailPage', 
+   //   item: item
+   // });
+ // }
 
-}
+
