@@ -9,14 +9,52 @@
 
 <ion-content>
   <ion-searchbar #searchTerm (keyup.enter)="getItems(searchTerm)" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}"></ion-searchbar>
-  <ion-list>
-    <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">
-      <ion-avatar item-start>
-        <img [src]="item.profilePic" />
-      </ion-avatar>
-      <h2>{{item.name}}</h2>
-      <p>{{item.about}}</p>
-      <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
-    </button>
-  </ion-list>
+<!--</ion-content>-->
+
+<ion-content class="cards-bg">
+  <ion-card *ngFor="let movie of currentMovies">
+
+   <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{movie.image}}"/>
+  <ion-card-content>
+    <ion-card-title>
+      {{movie.title}}
+      </ion-card-title>
+    <p>
+      {{movie.summary}}
+    </p>
+  </ion-card-content>
+  
+   <ion-row no-padding>
+      <ion-col>
+        <button ion-button clear small color="danger" icon-start>
+          <ion-icon name='star'></ion-icon>
+          Favorite
+        </button>
+      </ion-col>
+      <ion-col text-center>
+        <button ion-button clear small color="danger" icon-start>
+          <ion-icon name='musical-notes'></ion-icon>
+          Listen
+        </button>
+      </ion-col>
+      <ion-col text-right>
+        <button ion-button clear small color="danger" icon-start>
+          <ion-icon name='share-alt'></ion-icon>
+          Share
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  </ion-content>
+  
+  <!--!--<ion-list>-->
+    <!--<button ion-item (click)="openItem(item)" *ngFor="let movie of currentMovies">-->
+    <!--  <ion-avatar item-start>-->
+    <!--    <img [src]="item.profilePic" />-->
+    <!--  </ion-avatar>-->
+    <!--  <h2>{{item.name}}</h2>-->
+    <!--  <p>{{item.about}}</p>-->
+    <!--  <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>-->
+    <!--</button>-->
+  <!--</ion-list>-->
 </ion-content>

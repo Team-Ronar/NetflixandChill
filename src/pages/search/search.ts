@@ -26,7 +26,7 @@ export class SearchPage {
    .subscribe((data : any) => {
      data.results.forEach(movie => this.currentMovies.push({
      title: movie.title,
-     summary: movie.overvie,
+     summary: movie.overview,
      image: movie.poster_path,
      }))
      return console.log(this.currentMovies)
