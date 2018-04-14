@@ -8,7 +8,7 @@
 
 
 <ion-content>
-  <ion-searchbar #searchTerm (keyup.enter)="getItems(Items)" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}"></ion-searchbar>
+  <ion-searchbar #searchTerm (keyup.enter)="getItems(searchTerm)" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}"></ion-searchbar>
   <ion-list>
     <button ion-item (click)="openItem(Item)" *ngFor="let item of currentItems">
       <ion-avatar item-start>
