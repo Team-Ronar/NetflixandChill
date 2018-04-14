@@ -13,6 +13,8 @@ import { Api } from '../../providers/api/api';
 export class SearchPage {
 
   currentItems: any = [];
+  
+  currentMovies: any = [];
 
   constructor(public api: Api, public navCtrl: NavController, public navParams: NavParams, public items: Items) { }
 
@@ -21,7 +23,14 @@ export class SearchPage {
    */
   getItems(ev) {
    this.api.get(ev.value)
-   .subscribe(data => data.results.forEach(movie => console.log(movie.title)));
+   .subscribe((data : any) => {
+     data.results.forEach(movie => this.currentMovies.push({
+     title: movie.title,
+     summary: movie.overvie,
+     image: movie.poster_path,
+     }))
+     return console.log(this.currentMovies)
+   });
     
     
     // let val = ev.target.value;
