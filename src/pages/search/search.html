@@ -8,14 +8,14 @@
 
 
 <ion-content>
-  <ion-searchbar #searchTerm (keyup.enter)="getItems(searchTerm)" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}"></ion-searchbar>
+  <ion-searchbar #searchTerm (keyup.enter)="getItems(Items)" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}"></ion-searchbar>
   <ion-list>
-    <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">
+    <button ion-item (click)="openItem(Item)" *ngFor="let item of currentItems">
       <ion-avatar item-start>
-        <img [src]="item.profilePic" />
+        <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{movie.poster_path}}" >
       </ion-avatar>
-      <h2>{{item.name}}</h2>
-      <p>{{item.about}}</p>
+      <h2>{{Item.title}}</h2>
+      <p>{{Item.vote_count}}</p>
       <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
     </button>
   </ion-list>
