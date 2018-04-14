@@ -9,14 +9,14 @@
 
 <ion-content>
 
-  <ion-card *ngFor="let item of cardItems">
+  <ion-card *ngFor="let item of currentItems">
 
     <ion-item>
       <ion-avatar item-start>
-        <img [src]="item.user.avatar">
+        <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{item.poster_path}}">
       </ion-avatar>
-      <h2>{{item.user.name}}</h2>
-      <p>{{item.date}}</p>
+      <h2>{{item.title}}</h2>
+      <p>{{item.vote_count}}</p>
     </ion-item>
 
     <img [src]="item.image">

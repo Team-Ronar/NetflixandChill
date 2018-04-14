@@ -6,17 +6,26 @@
 
 </ion-header>
 
-
 <ion-content>
   <ion-searchbar #searchTerm (keyup.enter)="getItems(searchTerm)" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}"></ion-searchbar>
   <ion-list>
+    
     <button ion-item (click)="openItem(Item)" *ngFor="let item of currentItems">
+      
       <ion-avatar item-start>
+        
+        <ion-card>
         <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{item.poster_path}}" >
-      </ion-avatar>
+     
+     
+      
+      
       <h2>{{item.title}}</h2>
       <p>{{item.vote_count}}</p>
+      
+       </ion-card>
       <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
-    </button>
+     </button>
+    </ion-avatar>
   </ion-list>
 </ion-content>
