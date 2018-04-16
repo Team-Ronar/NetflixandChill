@@ -13,6 +13,10 @@ export class ContentPage {
  // @ViewChild(Slides) 
   slides: any[] = [];
   
+  mySlideOptions: any = {
+    loop: true,
+  }
+  
   
 
   constructor(public api: Api, public navCtrl: NavController) { }
@@ -20,7 +24,7 @@ export class ContentPage {
 getNowPlaying() {
     let endpoint = 'movie/now_playing';
     this.api.get(endpoint, {api_key: this.api.apiKey, language: 'en-US'})
-    .subscribe(result => result.results.forEach( movie => this.slides.push(movie.poster_path)));
+    .subscribe( (result: any) => result.results.forEach( movie => this.slides.push(movie.poster_path)));
 };
 
 ionViewDidLoad() {
