@@ -10,15 +10,14 @@ export class Api {
   ///discover/movie
   
 //https://api.themoviedb.org/3/search/movie?api_key=eac86952cd452099f635cdc4ef624edc&language=en-US&include_adult=false
-  filter: string = '&language=en-US&include_adult=false&query='
   
-  api: string = "api_key=eac86952cd452099f635cdc4ef624edc";
+  apiKey: string = "eac86952cd452099f635cdc4ef624edc";
 
   constructor(public http: HttpClient) {
   }
 
   get(endpoint: string, params?: any, reqOpts?: any) {
-    let getUrl = this.url + "search/movie?" + this.api + this.filter + endpoint;
+    //let getUrl = this.url + "search/movie?" + this.api + this.filter + endpoint;
     
     if (!reqOpts) {
       reqOpts = {
@@ -33,8 +32,9 @@ export class Api {
         reqOpts.params = reqOpts.params.set(k, params[k]);
       }
     }
-    console.log(getUrl);
-    return this.http.get(getUrl, reqOpts);
+    
+    
+    return this.http.get(this.url + endpoint, reqOpts);
   }
 
   post(endpoint: string, body: any, reqOpts?: any) {

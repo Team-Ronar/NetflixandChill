@@ -1,13 +1,19 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Content
+      Home
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <p>
-    This is a perfect starting point for a page with primarily text content. The body is padded nicely and ready for prose.
-  </p>
+<ion-content padding >
+  <!--<p>-->
+  <!--  This is a perfect starting point for a page with primarily text content. The body is padded nicely and ready for prose.-->
+  <!--</p>-->
+  <h1>Now Playing</h1>
+  <ion-slides >
+  <ion-slide *ngFor="let movie of slides">
+    <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{movie}}"/>
+  </ion-slide>
+</ion-slides>
 </ion-content>

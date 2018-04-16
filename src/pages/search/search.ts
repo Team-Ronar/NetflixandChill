@@ -15,15 +15,19 @@ export class SearchPage {
   currentItems: any = [];
   
   currentMovies: any = [];
+  
 
   constructor(public api: Api, public navCtrl: NavController, public navParams: NavParams, public items: Items) { }
 
   /**
    * Perform a service for the proper items.
    */
+   
   getItems(ev) {
-   this.api.get(ev.value)
-   .subscribe((data : any) => {
+    let endpoint = "search/movie?";
+    //+ this.filter + ev.value;
+    this.api.get(endpoint, {api_key: this.api.apiKey, language: 'en-US', include_adult: false, query: ev.value})
+    .subscribe((data : any) => {
      data.results.forEach(movie => this.currentMovies.push({
      title: movie.title,
      summary: movie.overview,
